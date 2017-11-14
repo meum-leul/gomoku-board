@@ -7,7 +7,7 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 from matplotlib import pyplot as plt
 
-class MatplotlibWidget(QtWidgets.QWidget):    
+class Board(QtWidgets.QWidget):    
     def __init__(self, size=(5.0, 4.0), dpi=80):
         QtWidgets.QWidget.__init__(self)
         self.fig = Figure(figsize=(11, 11), dpi=dpi)

@@ -151,7 +151,7 @@
          <widget class="QLCDNumber" name="player_2_score"/>
         </item>
         <item row="3" column="0" colspan="5">
-         <widget class="MatplotlibWidget" name="grid" native="true"/>
+         <widget class="Board" name="grid" native="true"/>
         </item>
         <item row="0" column="4">
          <widget class="QPushButton" name="start_button">
@@ -343,9 +343,9 @@
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-   <class>MatplotlibWidget</class>
+   <class>Board</class>
    <extends>QWidget</extends>
-   <header>matplotlibwidget</header>
+   <header>board</header>
    <container>1</container>
   </customwidget>
  </customwidgets>
