@@ -48,7 +48,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="game_tab">
        <attribute name="title">
@@ -107,7 +107,7 @@
          </widget>
         </item>
         <item row="1" column="3" rowspan="2">
-         <widget class="QLCDNumber" name="counter"/>
+         <widget class="Timer" name="counter"/>
         </item>
         <item row="1" column="4">
          <widget class="QPushButton" name="reset_button">
@@ -145,10 +145,10 @@
          </widget>
         </item>
         <item row="1" column="1" rowspan="2">
-         <widget class="QLCDNumber" name="player_1_score"/>
+         <widget class="QLCDNumber" name="player_1_score_display"/>
         </item>
         <item row="1" column="2" rowspan="2">
-         <widget class="QLCDNumber" name="player_2_score"/>
+         <widget class="QLCDNumber" name="player_2_score_display"/>
         </item>
         <item row="3" column="0" colspan="5">
          <widget class="Board" name="grid" native="true"/>
@@ -274,7 +274,7 @@
             </widget>
            </item>
            <item row="0" column="4">
-            <widget class="QSpinBox" name="spinBox_3">
+            <widget class="QSpinBox" name="seconds_spin_box">
              <property name="minimum">
               <number>0</number>
              </property>
@@ -294,7 +294,7 @@
             </widget>
            </item>
            <item row="0" column="2">
-            <widget class="QSpinBox" name="spinBox_2"/>
+            <widget class="QSpinBox" name="minute_spin_box"/>
            </item>
            <item row="1" column="0">
             <widget class="QLabel" name="number_of_games_label">
@@ -347,6 +347,11 @@
    <extends>QWidget</extends>
    <header>board</header>
    <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>Timer</class>
+   <extends>QLCDNumber</extends>
+   <header>timer</header>
   </customwidget>
  </customwidgets>
  <resources/>
