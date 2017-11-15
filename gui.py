@@ -91,12 +91,11 @@ class MainWindow(QtWidgets.QMainWindow, ui_mainwindow):
             self.player_2_score += 1
             QtWidgets.QMessageBox.about(self, 'Victory Message', self.player_2_name + ' wins')
             self.player_2_score_display.display(str(self.player_2_score))
-            self.clear()
         else:
             self.player_1_score += 1
             QtWidgets.QMessageBox.about(self, 'Victory Message', self.player_1_name + ' wins')
             self.player_1_score_display.display(str(self.player_1_score))
-            self.clear()
+        self.active = False
 
     def reset(self): 
         self.clear()
@@ -123,7 +122,8 @@ class MainWindow(QtWidgets.QMainWindow, ui_mainwindow):
     def start(self):
         if self.active:
             return
-        
+
+        self.clear()
         self.active = True
         self.counter.start_timer()
 
