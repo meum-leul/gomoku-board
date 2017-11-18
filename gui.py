@@ -14,7 +14,6 @@ import timer
 ui_mainwindow, _ = uic.loadUiType(conf.ui_filename)
 
 class MainWindow(QtWidgets.QMainWindow, ui_mainwindow):
-
     player_1_url = ''
     player_1_api = ''
     player_2_url = ''
@@ -83,8 +82,8 @@ class MainWindow(QtWidgets.QMainWindow, ui_mainwindow):
         self.player_2_name = name
 
     def update_time_duration(self):
-        self.counter.set_timeout_duration(int(self.minute_spin_box.value()*60 + 
-                                              self.seconds_spin_box.value()))
+        self.timeout_duration = int(self.minute_spin_box.value()*60 + 
+                                    self.seconds_spin_box.value())
 
     def handle_timeover(self):
         if self.player_1_button.isChecked() == True:
@@ -125,7 +124,7 @@ class MainWindow(QtWidgets.QMainWindow, ui_mainwindow):
 
         self.clear()
         self.active = True
-        self.counter.start_timer()
+        self.counter.start_timer(self.timeout_duration)
 
     def button_press_callback(self, event):
         if not self.active:
@@ -162,7 +161,7 @@ class MainWindow(QtWidgets.QMainWindow, ui_mainwindow):
             self.to_player_1()
 
         # reset timer
-        self.counter.start_timer()
+        self.counter.start_timer(self.timeout_duration)
 
     def to_player_1(self):
         self.color = 'black'
