@@ -7,7 +7,10 @@ from matplotlib.backends.backend_qt5agg import FigureCanvasQTAgg as FigureCanvas
 from matplotlib.figure import Figure
 from matplotlib import pyplot as plt
 
-class Board(QtWidgets.QWidget):    
+class Board(QtWidgets.QWidget):
+    # stone radius
+    radius = 0.4
+
     def __init__(self, size=(5.0, 4.0), dpi=80):
         QtWidgets.QWidget.__init__(self)
         self.fig = Figure(figsize=(11, 11), dpi=dpi)
@@ -47,3 +50,15 @@ class Board(QtWidgets.QWidget):
     def draw(self):
         self.canvas.draw()
 
+    def place_stone_at(self, coord, color):
+        xidx = coord[0]
+        yidx = coord[1]
+        
+        stone = plt.Circle((xidx, yidx), radius=self.radius,
+                                         fc=color, zorder=10)
+        self.ax.add_patch(stone)
+        self.draw()
+
+    def clear_board(self):
+        self.ax.patches.clear()
+        self.draw()

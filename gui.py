@@ -113,10 +113,10 @@ class MainWindow(QtWidgets.QMainWindow, ui_mainwindow):
         # reset board
         self.state = np.zeros((17, 17))
         # clear stone patches 
-        self.grid.ax.patches.clear()
+        self.grid.clear_board()
+        
         if self.player_2_button.isChecked() == True:
             self.to_player_1()
-        self.grid.draw()
         self.active = False
 
     def start(self):
@@ -146,10 +146,7 @@ class MainWindow(QtWidgets.QMainWindow, ui_mainwindow):
             self.state[xidx, yidx] = 1 if self.color == 'black' else -1
 
         # draw stone
-        stone = plt.Circle((xidx, yidx), radius=0.4, fc=self.color,
-                           zorder=10)
-        self.grid.ax.add_patch(stone)
-        self.grid.draw()
+        self.grid.place_stone_at((xidx, yidx), self.color)
 
         # determine winning condition here
         #TODO: do corresponding action ex. show popup message 
