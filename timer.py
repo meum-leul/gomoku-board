@@ -45,7 +45,7 @@ class Timer(QtWidgets.QLCDNumber):
 
     def decrement_counter(self):
         self.time_left_in_seconds -= 1
-        if self.time_left_in_seconds == -1:
+        if self.time_left_in_seconds == 0:
             # emit timeout signal on timeout
             self.timeover.emit()
             self.stop_timer()
