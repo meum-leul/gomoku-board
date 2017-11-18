@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 
 from PyQt5 import QtWidgets, QtCore
-from time import strftime
 
 class Timer(QtWidgets.QLCDNumber):
     # emitted when exceeded time limit
