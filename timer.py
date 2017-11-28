@@ -6,7 +6,7 @@ class Timer(QtWidgets.QLCDNumber):
     # emitted when exceeded time limit
     timeover = QtCore.pyqtSignal()
 
-    def __init__(self, parent=None, time_left_in_seconds=15):
+    def __init__(self, parent=None, time_left_in_seconds=0):
         super(Timer, self).__init__(parent)
         self.timer = QtCore.QTimer(self)
         
@@ -42,6 +42,10 @@ class Timer(QtWidgets.QLCDNumber):
     def pause_timer(self):
         self.timer.stop()
 
+    def resume_timer(self):
+        self.timer.start(self.time_left_in_seconds*100)
+        self.timer.setInterval(1000)
+
     def decrement_counter(self):
         self.time_left_in_seconds -= 1
         if self.time_left_in_seconds == 0:
@@ -52,3 +56,9 @@ class Timer(QtWidgets.QLCDNumber):
             minutes = self.time_left_in_seconds//60
             seconds = self.time_left_in_seconds - minutes*60
             self.display("{:02d}:{:02d}".format(minutes, seconds))
+
+    def is_set(self):
+        if self.time_left_in_seconds > 0:
+            return True
+        else:
+            return False

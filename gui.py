@@ -48,6 +48,8 @@ class MainWindow(QtWidgets.QMainWindow, ui_mainwindow):
         self.player_2_url_textEdit.textChanged.connect(self.update_player_2_url)
         self.player_2_api_textEdit.textChanged.connect(self.update_player_2_api)
 
+        self.tabWidget.currentChanged.connect(self.change_tab)
+
         self.grid.canvas.mpl_connect('button_press_event', self.button_press_callback)
 
         self.reset_button.clicked.connect(self.reset)
@@ -60,6 +62,16 @@ class MainWindow(QtWidgets.QMainWindow, ui_mainwindow):
         self.size_spin_box.valueChanged.connect(self.update_board_size)
 
         self.counter.timeover.connect(self.handle_timeover)
+
+    def change_tab(self, id):
+        if self.counter.is_set():
+            # game is in play
+            if id == 0:
+                # displaying game screen
+                self.counter.resume_timer()
+            elif id == 1:
+                # displaying options
+                self.counter.pause_timer()
 
     def update_board_size(self, size):
         self.grid.update_size(size)
