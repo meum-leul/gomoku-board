@@ -27,7 +27,7 @@ class Board(QtWidgets.QWidget):
         self.fig.tight_layout()
         self.setLayout(self.vbox)
 
-        # draw 17*17 go board
+        # draw 17*17 go board by default
         ticks = np.arange(17)
         self.ax.set_xticks(ticks)
         self.ax.set_yticks(ticks)
@@ -45,6 +45,8 @@ class Board(QtWidgets.QWidget):
         ticks = np.arange(size)
         self.ax.set_xticks(ticks)
         self.ax.set_yticks(ticks)
+        self.ax.set_xlim((0, size-1))
+        self.ax.set_ylim((0, size-1))
         self.draw()
 
     def draw(self):

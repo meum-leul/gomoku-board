@@ -57,7 +57,12 @@ class MainWindow(QtWidgets.QMainWindow, ui_mainwindow):
         self.minute_spin_box.valueChanged.connect(self.update_time_duration)
         self.seconds_spin_box.valueChanged.connect(self.update_time_duration)
 
+        self.size_spin_box.valueChanged.connect(self.update_board_size)
+
         self.counter.timeover.connect(self.handle_timeover)
+
+    def update_board_size(self, size):
+        self.grid.update_size(size)
 
     def update_player_1_url(self):
         self.player_1_url = self.player_1_url_textEdit.toPlainText()
