@@ -10,6 +10,7 @@ from matplotlib import pyplot as plt
 class Board(QtWidgets.QWidget):
     # stone radius
     radius = 0.4
+    size = 16
 
     def __init__(self, size=(5.0, 4.0), dpi=80):
         QtWidgets.QWidget.__init__(self)
@@ -27,8 +28,8 @@ class Board(QtWidgets.QWidget):
         self.fig.tight_layout()
         self.setLayout(self.vbox)
 
-        # draw 17*17 go board by default
-        ticks = np.arange(17)
+        # draw 16*16 go board by default
+        ticks = np.arange(self.size)
         self.ax.set_xticks(ticks)
         self.ax.set_yticks(ticks)
         self.ax.grid(True, color='black')
@@ -40,13 +41,18 @@ class Board(QtWidgets.QWidget):
         new_size = QtCore.QSize(10, 10)
         new_size.scale(event.size(), QtCore.Qt.KeepAspectRatio)
         self.resize(new_size)
+    
+    def get_size(self):
+        return self.size
 
-    def update_size(self, size):
+    def set_size(self, size):
         ticks = np.arange(size)
         self.ax.set_xticks(ticks)
         self.ax.set_yticks(ticks)
         self.ax.set_xlim((0, size-1))
         self.ax.set_ylim((0, size-1))
+        self.size = size
+
         self.draw()
 
     def draw(self):

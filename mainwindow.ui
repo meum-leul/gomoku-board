@@ -48,7 +48,7 @@
     <item>
      <widget class="QTabWidget" name="tabWidget">
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="game_tab">
        <attribute name="title">
@@ -326,7 +326,7 @@
            <item row="1" column="5">
             <widget class="QSpinBox" name="size_spin_box">
              <property name="value">
-              <number>17</number>
+              <number>16</number>
              </property>
             </widget>
            </item>

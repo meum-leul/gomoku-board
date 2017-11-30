@@ -35,7 +35,8 @@ class MainWindow(QtWidgets.QMainWindow, ui_mainwindow):
         self.connect_activity()
       
         # 1: black, 0: empty, -1: white
-        self.state = np.zeros((17, 17))
+        size = self.grid.get_size()
+        self.state = np.zeros((size, size))
         # black stone goes first
         self.color = 'black'
 
@@ -74,8 +75,8 @@ class MainWindow(QtWidgets.QMainWindow, ui_mainwindow):
                 self.counter.pause_timer()
 
     def update_board_size(self, size):
-        self.grid.update_size(size)
-
+        self.grid.set_size(size)
+        
     def update_player_1_url(self):
         self.player_1_url = self.player_1_url_textEdit.toPlainText()
 
@@ -127,7 +128,8 @@ class MainWindow(QtWidgets.QMainWindow, ui_mainwindow):
         # reset timer
         self.counter.stop_timer()
         # reset board
-        self.state = np.zeros((17, 17))
+        size = self.grid.get_size()
+        self.state = np.zeros((size, size))
         # clear stone patches 
         self.grid.clear_board()
         
